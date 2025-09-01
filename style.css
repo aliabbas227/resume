@@ -322,18 +322,23 @@ footer {
 
 .download-btn {
   display: inline-block;
-  padding: 10px 20px;
-  margin: 15px 0;
-  background-color: #222;   /* match your theme */
-  color: white;
-  text-decoration: none;
+  padding: 0.55rem 1rem;
+  margin: 12px 0;
+  border: 2px solid var(--accent);  /* border in your accent color */
   border-radius: 8px;
-  font-weight: bold;
-  transition: background 0.3s;
+  text-decoration: none;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--accent);              /* text same as border */
+  background: transparent;           /* remove background */
+  transition: background 0.2s, color 0.2s;
 }
+
 .download-btn:hover {
-  background-color: #444;
+  background: var(--accent);         /* fill on hover */
+  color: white;                      /* invert text color */
 }
+
 @media print {
-  .download-btn { display: none; } /* hides button on actual print */
+  .download-btn { display: none !important; }
 }

@@ -319,3 +319,21 @@ footer {
     fill: #333;                 /* dark on hover */
   }
 }
+
+.download-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 15px 0;
+  background-color: #222;   /* match your theme */
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+.download-btn:hover {
+  background-color: #444;
+}
+@media print {
+  .download-btn { display: none; } /* hides button on actual print */
+}

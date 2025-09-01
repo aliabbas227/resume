@@ -1,0 +1,321 @@
+/* Color Theme for website */
+:root {
+    --primary: white;
+    --light-bg: turquoise;
+    --accent: rgb(45, 122, 114);
+}
+
+/* Header and About Section */
+header { text-align: center; }
+
+/* Header divider */
+.site-header {
+  border: 0;   /* remove the full-width border */
+  padding: 0;
+  margin: 0 0 12px 0;
+}
+
+/* Centered container with border */
+.header-container {
+  max-width: 900px;       /* match your main width */
+  margin: 0 auto;         /* center it */
+  padding: 8px 0;
+  border-bottom: 2px solid var(--accent);
+  text-align: center;
+}
+
+/* Styling the body */
+body {
+  margin: 16px;                      /* small outer margin so it prints nicely */
+  font-family: Cambria, serif;
+  font-size: 16px;                   /* explicit size beats 'large' */
+  line-height: 1.5;                  /* readability */
+  color: #111;
+  background: #fff;
+}
+
+/* Styling h2 */
+h2 {
+    text-decoration: underline;                 /* Put underline under the header */
+}
+
+/* SKILLS: 3 rows per column, columns share width evenly */
+.skills-list {
+  list-style: disc;
+  list-style-position: outside;
+  padding-left: 1.2em;           /* ensures bullets aren’t clipped */
+  margin: 0 0 0 5%;
+
+  display: grid;
+  grid-auto-flow: column;        /* fill down, then next column */
+  grid-template-rows: repeat(3, auto);
+  grid-auto-columns: 1fr;        /* even columns across */
+  gap: 6px 8px;                  /* row gap | column gap */
+}
+
+/* Styling lists for experience */
+.experience-list {
+  list-style: disc;
+  list-style-position: outside;
+  padding-left: 1.2em;
+  margin: 0 0 8px 5%;
+}
+
+.experience-list li { margin-bottom: 6px; }
+
+section {
+  border: 0;
+  border-bottom: 1px solid var(--accent);
+  padding: 8px 0;
+  margin-bottom: 8px;
+}
+
+section:last-of-type {
+  border-bottom: 0;
+  margin-bottom: 0;
+}
+
+/* styling the footer */
+footer {
+    text-align: center;
+}
+
+@media screen {
+  body { background: var(--primary); }       /* white already */
+  main  { max-width: 900px; margin: 0 auto; }/* improve readability on large screens */
+}
+
+/* === PRINT-ONLY STYLES === */
+@media print {
+  /* Let content use full printable width */
+  body, main, .header-container {
+    max-width: none !important;
+    width: 100% !important;
+    margin: 0;
+  }
+
+  /* Page margins (white border around the page) */
+  @page {
+    margin: 0.75in;
+  }
+
+  /* Compact text for print */
+  body {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  /* Section spacing (tightened) */
+  section {
+    margin: 4px 0 !important;
+    padding: 2px 0 !important;
+    border: none; /* optional: cleaner look */
+  }
+
+  /* Heading spacing (tightened) */
+  h1, h2, h3 {
+    margin-top: 4px !important;
+    margin-bottom: 2px !important;
+  }
+
+  /* Paragraphs & lists */
+  p, ul, li {
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
+  }
+
+  /* Prevent awkward splits */
+  section, header, footer {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Keep colors and borders when printing */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    box-shadow: none !important;
+  }
+}
+
+/* === PRINT LAYOUT FIX: let Experience split across pages === */
+@media print {
+  /* 1) Undo the global "no breaks inside sections" */
+  section, header, footer {
+    page-break-inside: auto !important;
+    break-inside: auto !important;
+  }
+
+  /* 2) Keep headings attached to what follows (no orphan titles) */
+  h2, h3 {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+
+  /* 3) Allow Experience to flow naturally across pages */
+  #experience {
+    page-break-inside: auto !important;
+    break-inside: auto !important;
+  }
+
+  /* 4) Keep Projects snug above Experience (you already added this, reinforcing here) */
+  #projects {
+    margin-bottom: 2px !important;
+    padding-bottom: 2px !important;
+  }
+}
+
+@media print {
+  @page {
+    margin-top: 0.4in;   /* tighter top */
+    margin-right: 0.75in;
+    margin-bottom: 0.75in;
+    margin-left: 0.75in;
+  }
+}
+
+@media screen {
+  body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+  h1, h2, h3 { letter-spacing: 0.2px; }
+  h1 { font-weight: 700; }
+  h2, h3 { font-weight: 600; }
+}
+
+@media screen {
+  main { max-width: 960px; margin: 0 auto; padding: 8px 16px; }
+  section { padding: 14px 0; }    /* slightly airier on web */
+}
+
+@media screen {
+  h2 {
+    text-decoration: none;                 /* remove underline on web only */
+    position: relative;
+    padding-left: 10px;
+  }
+  h2::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0.35em;
+    width: 4px; height: 0.9em;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+}
+
+@media screen {
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+  a:hover { border-bottom-color: currentColor; }
+}
+
+@media screen {
+  .project-container { display: grid; grid-template-columns: 1fr; gap: 12px; }
+  .project-card {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,.06);
+    border-radius: 8px;
+    padding: 12px 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.04);
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .project-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0,0,0,.08);
+  }
+}
+
+@media screen {
+  #experience h3 { margin: 10px 0 6px; }
+  .experience-list li { margin-bottom: 6px; }
+}
+
+@media screen {
+  html { scroll-behavior: smooth; }
+}
+
+@media print {
+  /* Links should look like normal text on paper */
+  a {
+    color: inherit !important;
+    text-decoration: none !important;
+    border: 0 !important;
+  }
+  /* Ensure no URL tails or icon content gets appended */
+  a::after {
+    content: "" !important;
+  }
+}
+
+@media print {
+  /* Hide GitHub (and anything with .print-hide) on print */
+  .print-hide {
+    display: none !important;
+  }
+
+  /* Make links look like plain text in print */
+  a {
+    color: inherit !important;
+    text-decoration: none !important;
+    border: 0 !important;
+  }
+  a::after {
+    content: "" !important;
+  }
+}
+
+@media screen {
+  #contact i {
+    color: var(--accent);
+    margin-right: 6px;
+    font-size: 1.1em;   /* makes icons slightly bigger */
+    vertical-align: middle;
+  }
+
+  /* GitHub icon link */
+  #contact a i {
+    margin-right: 0;   /* remove extra space for GitHub icon */
+  }
+}
+
+@media screen {
+  /* Header container – clean, no background */
+  .header-container {
+    padding: 12px 0 8px;
+    margin-bottom: 16px;
+    text-align: center;
+    border-bottom: 2px solid var(--accent); /* same as sections */
+  }
+
+  /* Name */
+  .header-container h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 0 0 4px;
+    color: #111;
+  }
+
+  /* Tagline */
+  .header-container p {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #333;
+    margin: 0;
+  }
+
+  /* Remove accent bar */
+  .header-container::after {
+    content: none;
+  }
+}
+
+@media screen {
+  .github-icon {
+    width: 22px;
+    height: 22px;
+    fill: var(--accent);        /* makes it turquoise */
+    vertical-align: middle;
+    transition: fill 0.2s ease;
+  }
+  .github-icon:hover {
+    fill: #333;                 /* dark on hover */
+  }
+}

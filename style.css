@@ -40,7 +40,7 @@ body {
 /* Print */
 @media print {
   /* Compact and ink-friendly */
-  body { font-size: 14px; line-height: 1.4; }
+  body { font-size: 13px; line-height: 1.4; }
   /* Keep colors and borders when printing */
   * {
     -webkit-print-color-adjust: exact !important;
